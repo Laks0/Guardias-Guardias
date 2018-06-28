@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/melee.gd" type="Script" id=1]
+[ext_resource path="res://assets/move.png" type="Texture" id=2]
+[ext_resource path="res://assets/soldierIdle1.png" type="Texture" id=3]
+[ext_resource path="res://assets/soldierIdle2.png" type="Texture" id=4]
+[ext_resource path="res://assets/soldierIdle3.png" type="Texture" id=5]
+[ext_resource path="res://assets/soldierIdle4.png" type="Texture" id=6]
+[ext_resource path="res://assets/soldierIdle5.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[node name="Melee" type="KinematicBody2D" index="0" groups=[
+"Melee",
+"Unit",
+]]
+
+input_pickable = true
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pickable", "Transform" ]
+movement = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( 32, 32 )
+frames = SubResource( 1 )
+animation = "idle"
+frame = 4
+playing = true
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Collision" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 32, 32 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Temp" type="Node2D" parent="." index="2"]
+
+
