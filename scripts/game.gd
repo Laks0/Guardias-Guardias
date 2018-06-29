@@ -3,8 +3,11 @@ extends TileMap
 export (PackedScene) var Melee
 export (PackedScene) var Guard
 export (PackedScene) var Fort
+export (PackedScene) var Wall
 
-var players = []
+export (Array) var walls
+
+var players = [1,1]
 var turn = 0
 
 var frt
@@ -50,16 +53,13 @@ func _on_Fort_pressed():
 	grid[celSeld.x][celSeld.y] = f.set_up(celSeld*GRID_S,turn)
 	sel = false
 	frt.empty()
+	players[turn] += 1
 
 func _on_TextureButton_pressed():
 	sel = false
 	$Sprite.visible = false
 
 func _ready():
-	for i in range(0, 1):
-		var p = [25]
-		players.append(p)
-	
 	for x in range(1,floor(1280/GRID_S+1)):
 		var r = []
 		for y in range(1,floor(720/GRID_S+2)):
@@ -74,8 +74,18 @@ func _ready():
 		grid[pos.x][pos.y] = f.set_up(pos*GRID_S,i)
 		add_child(f)
 		f.fill()
+	
+	for i in range(0,len(walls)):
+		var w = Wall.instance()
+		add_child(w)
+		var pos = walls[i]
+		w.rect_position = pos * GRID_S
+		grid[pos.x][pos.y] = -1
 
 func _process(delta):
+	$P0.text = str(players[0])
+	$P1.text = str(players[1])
+	
 	$Sprite.visible = sel
 
 func select(from):

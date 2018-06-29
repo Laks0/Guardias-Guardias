@@ -10,6 +10,7 @@
 ]]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 Move = ExtResource( 2 )
 
 [node name="Texture" type="TextureProgress" parent="." index="0"]
@@ -27,7 +28,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 min_value = 0.0
-max_value = 3.0
+max_value = 4.0
 step = 0.0
 page = 0.0
 value = 1.0

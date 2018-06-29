@@ -1,20 +1,21 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://objects/Melee.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/Guard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/Fort.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/button.png" type="Texture" id=5]
-[ext_resource path="res://assets/buttonHold.png" type="Texture" id=6]
-[ext_resource path="res://assets/coolvetica rg.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://assets/sel.png" type="Texture" id=8]
+[ext_resource path="res://objects/Wall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/button.png" type="Texture" id=6]
+[ext_resource path="res://assets/buttonHold.png" type="Texture" id=7]
+[ext_resource path="res://assets/coolvetica rg.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/sel.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 15
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 7 )
+font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -22,7 +23,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 17
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 7 )
+font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -30,7 +31,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 17
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 7 )
+font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -38,7 +39,15 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 23
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 7 )
+font_data = ExtResource( 8 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 8 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Game" type="TileMap" index="0"]
@@ -65,6 +74,8 @@ _sections_unfolded = [ "Cell", "Occluder", "Transform" ]
 Melee = ExtResource( 2 )
 Guard = ExtResource( 3 )
 Fort = ExtResource( 4 )
+Wall = ExtResource( 5 )
+walls = [  ]
 
 [node name="Pass turn" type="TextureButton" parent="." index="0"]
 
@@ -86,9 +97,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
 _sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="Label" type="Label" parent="Pass turn" index="0"]
@@ -119,7 +130,7 @@ _sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
 position = Vector2( 1280, 0 )
 z_index = 1
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 offset = Vector2( 32, 32 )
 _sections_unfolded = [ "Offset", "Visibility", "Z Index" ]
 
@@ -148,9 +159,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Label" type="Label" parent="Sprite/Options/Soldier" index="0"]
@@ -198,9 +209,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Label" type="Label" parent="Sprite/Options/Cancel" index="0"]
@@ -248,9 +259,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Label" type="Label" parent="Sprite/Options/Guard" index="0"]
@@ -298,9 +309,9 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_hover = ExtResource( 5 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 6 )
 _sections_unfolded = [ "Textures" ]
 
 [node name="Label" type="Label" parent="Sprite/Options/Fort" index="0"]
@@ -353,6 +364,53 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+
+[node name="P0" type="Label" parent="." index="3"]
+
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 500.0
+margin_right = 540.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+text = "1"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
+
+[node name="P1" type="Label" parent="." index="4"]
+
+modulate = Color( 1, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 740.0
+margin_right = 780.0
+margin_bottom = 37.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 5 )
+text = "1"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_fonts" ]
 
 [connection signal="pressed" from="Pass turn" to="." method="_on_Pass_turn_pressed"]
 

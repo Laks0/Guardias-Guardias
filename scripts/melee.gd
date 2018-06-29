@@ -136,6 +136,8 @@ func shoot(pos,d):
 					Game.remove_child(c)
 					Game.grid[pos.x][pos.y] = 0
 					killed = true
+					if c.is_in_group("Fort"):
+						Game.players[1-Game.turn] -= 1
 	
 	if killed:
 		rad = 0
